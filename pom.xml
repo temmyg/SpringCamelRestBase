@@ -11,12 +11,18 @@
 	<name>springboot-camel-rest-base</name>
 	<description>Demo project for Spring Boot</description>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.9.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+	<!--<parent>-->
+		<!--<groupId>org.apache.camel</groupId>-->
+		<!--<artifactId>examples</artifactId>-->
+		<!--<version>2.20.1</version>-->
+	<!--</parent>-->
+
+	<!--<parent>-->
+		<!--<groupId>org.springframework.boot</groupId>-->
+		<!--<artifactId>spring-boot-starter-parent</artifactId>-->
+		<!--<version>1.5.9.RELEASE</version>-->
+		<!--<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+	<!--</parent>-->
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -24,25 +30,102 @@
 		<java.version>1.8</java.version>
 	</properties>
 
+	<repositories>
+		<repository>
+			<id>maven-restlet</id>
+			<name>Public online Restlet repository</name>
+			<url>http://maven.restlet.org</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
+		<!--<dependency>-->
+			<!--<groupId>org.apache.camel</groupId>-->
+			<!--<artifactId>camel-spring-boot-starter</artifactId>-->
+			<!--<version>2.20.1</version>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-starter-web</artifactId>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-starter-undertow</artifactId>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>org.apache.camel</groupId>-->
+			<!--<artifactId>camel-restlet</artifactId>-->
+			<!--<version>2.21.0-SNAPSHOT</version>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>org.apache.camel</groupId>-->
+			<!--<artifactId>camel-servlet</artifactId>-->
+			<!--<version>2.20.1</version>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>org.restlet.jee</groupId>-->
+			<!--<artifactId>org.restlet.ext.spring</artifactId>-->
+			<!--<version>2.3.12</version>-->
+		<!--</dependency>-->
+		<!--&lt;!&ndash;<dependency>&ndash;&gt;-->
+			<!--&lt;!&ndash;<groupId>org.apache.camel</groupId>&ndash;&gt;-->
+			<!--&lt;!&ndash;<artifactId>camel-metrics</artifactId>&ndash;&gt;-->
+			<!--&lt;!&ndash;<version>2.14.0</version>&ndash;&gt;-->
+		<!--&lt;!&ndash;</dependency>&ndash;&gt;-->
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-starter-test</artifactId>-->
+			<!--<scope>test</scope>-->
+		<!--</dependency>-->
+
 		<dependency>
 			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-spring-boot-starter</artifactId>
+			<artifactId>camel-core</artifactId>
 			<version>2.20.1</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-spring</artifactId>
+			<version>2.20.1</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-undertow</artifactId>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-servlet</artifactId>
+			<version>2.20.1</version>
 		</dependency>
+				<!--<dependency>-->
+					<!--<groupId>org.apache.camel</groupId>-->
+					<!--<artifactId>camel-metrics</artifactId>-->
+				<!--</dependency>-->
+				<!-- use for json binding -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jackson</artifactId>
+			<version>2.20.1</version>
 		</dependency>
+
+		<!-- we need spring web -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>5.0.2.RELEASE</version>
+		</dependency>
+
+		<!-- swagger api -->
+		<!--<dependency>-->
+			<!--<groupId>org.apache.camel</groupId>-->
+			<!--<artifactId>camel-swagger</artifactId>-->
+		<!--</dependency>-->
+
+		<!-- logging -->
+		<!--<dependency>-->
+			<!--<groupId>log4j</groupId>-->
+			<!--<artifactId>log4j</artifactId>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>org.slf4j</groupId>-->
+			<!--<artifactId>slf4j-log4j12</artifactId>-->
+		<!--</dependency>-->
 	</dependencies>
 
 	<build>
@@ -51,8 +134,16 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.4.6.v20170531</version>
+				<configuration>
+					<httpConnector>
+					<port>8084</port>
+					</httpConnector>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-
-
 </project>
